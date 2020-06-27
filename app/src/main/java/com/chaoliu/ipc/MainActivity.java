@@ -8,6 +8,7 @@ import android.util.Log;
 import com.chaoliu.ipc.aidl.IComputer;
 import com.chaoliu.ipc.aidl.ISecurityCenter;
 import com.chaoliu.ipc.binderpool.client.BinderPool;
+import com.chaoliu.ipc.wake.TalkOrWakeApp;
 
 // @author chentong
 //todo 客户端实现
@@ -36,9 +37,23 @@ public class MainActivity extends Activity {
 //            }
 //        } ).start();
 
-        //todo 3  支持重连
-        bookManagerClientFromPool = new BookManagerClientFromPool( this );
-        bookManagerClientFromPool.bindService();
+//        //todo 3  支持重连
+//        bookManagerClientFromPool = new BookManagerClientFromPool( this );
+//        bookManagerClientFromPool.bindService();
+
+        testTalkOrWake();
+    }
+
+    private void testTalkOrWake() {
+
+        new Thread( new Runnable() {
+            @Override
+            public void run() {
+                TalkOrWakeApp  talk = new  TalkOrWakeApp(MainActivity.this);
+                talk.talkOrWake();
+            }
+        } ).start();
+
     }
 
     @Override

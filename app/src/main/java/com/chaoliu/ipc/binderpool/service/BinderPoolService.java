@@ -11,9 +11,11 @@ import com.chaoliu.ipc.aidl.IBinderPool;
 import com.chaoliu.ipc.aidl.IBookManager;
 import com.chaoliu.ipc.aidl.IComputer;
 import com.chaoliu.ipc.aidl.ISecurityCenter;
+import com.chaoliu.ipc.aidl.IWakeApp;
 import com.chaoliu.ipc.binderpool.stub.BookManagerImpl;
 import com.chaoliu.ipc.binderpool.stub.ComputerImpl;
 import com.chaoliu.ipc.binderpool.stub.SecurityCenterImpl;
+import com.chaoliu.ipc.binderpool.stub.WakeUpImpl;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -61,6 +63,8 @@ public class BinderPoolService extends Service {
         binderMap.put( IComputer.class.getSimpleName(),new ComputerImpl() );
         binderMap.put( ISecurityCenter.class.getSimpleName(),new SecurityCenterImpl() );
         binderMap.put( IBookManager.class.getSimpleName(),new BookManagerImpl() );
+        binderMap.put( IWakeApp.class.getSimpleName(),new WakeUpImpl() );
+
     }
 
     @Override

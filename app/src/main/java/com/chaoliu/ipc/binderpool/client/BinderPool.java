@@ -54,18 +54,11 @@ public class BinderPool {
         connectionMap.put( clazz,connection );
     }
 
-    private void connectBinderPoolService() {
+    private  void connectBinderPoolService() {
 
         latch = new CountDownLatch( 1 );
 
-        //通过action访问 binderPoolService  可以跨app调用
-        Intent intent = new Intent(  );
-        intent.setAction( "com.chaoliu.ipc.binderpool.service.BinderPoolService" );
-        intent.setPackage( "com.chaoliu.ipc" );
-
-        //避免直接引用
-//        Intent intent = new Intent( mContext, BinderPoolService.class );
-        mContext.bindService( intent, mBinderPoolConnection, Context.BIND_AUTO_CREATE );
+        bindService();
 
         //用来保障 connection初始化完毕
         try {
@@ -74,6 +67,18 @@ public class BinderPool {
             e.printStackTrace();
         }
     }
+
+    public void bindService(){
+        //通过action访问 binderPoolService  可以跨app调用
+        Intent intent = new Intent(  );
+        intent.setAction( "com.chaoliu.ipc.binderpool.service.BinderPoolService" );
+        intent.setPackage( "com.chaoliu.ipc" );
+
+        //避免直接引用
+//        Intent intent = new Intent( mContext, BinderPoolService.class );
+        mContext.bindService( intent, mBinderPoolConnection, Context.BIND_AUTO_CREATE );
+    }
+
 
     //binder池查询
     public IBinder queryBinder(Class clazz) {

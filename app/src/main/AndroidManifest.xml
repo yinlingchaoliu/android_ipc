@@ -20,6 +20,10 @@
     <!-- binderpool 使用权限 -->
     <uses-permission android:name="com.chaoliu.ipc.permission.ACCESS_BINDER_POOL_SERVICE" />
 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

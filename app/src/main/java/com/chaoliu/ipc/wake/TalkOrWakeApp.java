@@ -33,6 +33,7 @@ public class TalkOrWakeApp {
         Log.e( "talk","TalkOrWakeApp" );
     }
 
+    //应该直接使用
     public Node create(){
 
         lock.lock();
